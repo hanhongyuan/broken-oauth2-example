@@ -20,7 +20,7 @@ public class WorkingController {
     @RequestMapping("/test")
     public ResponseEntity<String> runTest() throws Exception {
         return Optional.ofNullable(workingService.stringify(getCurrentUser()))
-                .map(username -> new ResponseEntity<>(username, HttpStatus.OK))
+                .map(userId -> new ResponseEntity<>(userId, HttpStatus.OK))
                 .orElseThrow(() -> new Exception("Should not happen."));
     }
 

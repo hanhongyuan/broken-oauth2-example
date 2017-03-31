@@ -16,7 +16,7 @@ public class BrokenController {
     @RequestMapping("/test")
     public ResponseEntity<String> runTest() throws Exception {
         return Optional.ofNullable(brokenService.stringify())
-                .map(username -> new ResponseEntity<>(username, HttpStatus.OK))
+                .map(userId -> new ResponseEntity<>(userId, HttpStatus.OK))
                 .orElseThrow(() -> new Exception("Boom!"));
     }
 }

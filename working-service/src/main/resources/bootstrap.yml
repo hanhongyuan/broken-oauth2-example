@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: working-service
+server:
+  port: 8383
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+      jwt:
+        key-value: aTokenSigningKey
+    client:
+      client-id: acme
+management:
+  security:
+    enabled:
+      false
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
+ribbon:
+  http:
+    client:
+      enabled: true

@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: edge-service
+server:
+  port: 9999
+zuul:
+  ignored-services: '*'
+  ignored-patterns: /**/api/**
+  add-proxy-headers: true
+  routes:
+    working-service: /workingservice/**
+    broken-service: /brokenservice/**
+    user-service:
+      path: /user/**
+      service-id: user-service
+      sensitive-headers:
+security:
+  basic:
+    enabled: false
+  oauth2:
+    resource:
+      filter-order: 3
+      jwt:
+        key-value: aTokenSigningKey
+management:
+  security:
+    enabled:
+      false
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/

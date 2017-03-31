@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: user-service
+server:
+  port: 8181
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+  user:
+    password: password
+  enable-csrf: false
+management:
+  security:
+    enabled:
+      false
+eureka:
+  instance:
+    prefer-ip-address: true
+    non-secure-port: 8181
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/

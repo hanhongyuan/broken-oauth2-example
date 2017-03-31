@@ -1,0 +1,35 @@
+user-service:
+  image: broken-oauth2-example/user-service
+  ports:
+   - 8181:8181
+   - 9191:9191
+  links:
+   - discovery-service
+discovery-service:
+  image: broken-oauth2-example/discovery-service
+  ports:
+   - 8761:8761
+   - 9761:9761
+edge-service:
+  image: broken-oauth2-example/edge-service
+  ports:
+   - 9999:9999
+   - 10000:10000
+  links:
+   - discovery-service
+broken-service:
+  image: broken-oauth2-example/broken-service
+  ports:
+   - 8282:8282
+   - 9292:9292
+  links:
+   - discovery-service
+   - user-service
+working-service:
+  image: broken-oauth2-example/working-service
+  ports:
+   - 8383:8383
+   - 9393:9393
+  links:
+   - discovery-service
+   - user-service
